@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1FDCEC87492780697725AADC /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 725773F11827DCE50BD65F50 /* libPods.a */; };
 		9E2A9CA01CC3EFE300DD2E69 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2A9C9F1CC3EFE300DD2E69 /* AppDelegate.swift */; };
 		9E2A9CA21CC3EFE300DD2E69 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2A9CA11CC3EFE300DD2E69 /* MainViewController.swift */; };
 		9E2A9CA51CC3EFE300DD2E69 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E2A9CA31CC3EFE300DD2E69 /* Main.storyboard */; };
@@ -19,6 +20,9 @@
 		9E2A9CD41CC4032800DD2E69 /* DrawingRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2A9CD31CC4032800DD2E69 /* DrawingRate.swift */; };
 		9E2A9CD61CC406AF00DD2E69 /* WinningConditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2A9CD51CC406AF00DD2E69 /* WinningConditions.swift */; };
 		9E2A9CD81CC4151B00DD2E69 /* Win.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2A9CD71CC4151B00DD2E69 /* Win.swift */; };
+		9E3EEE8C1CC5609500CDF835 /* LottoDaysProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E3EEE8B1CC5609500CDF835 /* LottoDaysProvider.swift */; };
+		9E3EEE8F1CC5657D00CDF835 /* HTTPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E3EEE8E1CC5657D00CDF835 /* HTTPManager.swift */; };
+		9E3EEE911CC5672200CDF835 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 9E3EEE901CC5672200CDF835 /* Podfile */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +43,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		725773F11827DCE50BD65F50 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		7F3AC696AAC18E91E2791634 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "../Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		8433F82A0284B48105B78B18 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "../Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		9E2A9C9C1CC3EFE300DD2E69 /* MyLotto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyLotto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E2A9C9F1CC3EFE300DD2E69 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9E2A9CA11CC3EFE300DD2E69 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -57,6 +64,10 @@
 		9E2A9CD31CC4032800DD2E69 /* DrawingRate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawingRate.swift; sourceTree = "<group>"; };
 		9E2A9CD51CC406AF00DD2E69 /* WinningConditions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WinningConditions.swift; sourceTree = "<group>"; };
 		9E2A9CD71CC4151B00DD2E69 /* Win.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Win.swift; sourceTree = "<group>"; };
+		9E3EEE8B1CC5609500CDF835 /* LottoDaysProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LottoDaysProvider.swift; sourceTree = "<group>"; };
+		9E3EEE8E1CC5657D00CDF835 /* HTTPManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPManager.swift; sourceTree = "<group>"; };
+		9E3EEE901CC5672200CDF835 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Podfile; path = ../../Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9E3EEE921CC56C2C00CDF835 /* MyLotto-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MyLotto-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FDCEC87492780697725AADC /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,6 +96,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8806BF66D03F9940B74C433C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				725773F11827DCE50BD65F50 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		9E2A9C931CC3EFE300DD2E69 = {
 			isa = PBXGroup;
 			children = (
@@ -91,6 +111,8 @@
 				9E2A9CB31CC3EFE300DD2E69 /* MyLottoTests */,
 				9E2A9CBE1CC3EFE300DD2E69 /* MyLottoUITests */,
 				9E2A9C9D1CC3EFE300DD2E69 /* Products */,
+				DEDEF8D25B03F26D007E7DBF /* Pods */,
+				8806BF66D03F9940B74C433C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -107,6 +129,7 @@
 		9E2A9C9E1CC3EFE300DD2E69 /* MyLotto */ = {
 			isa = PBXGroup;
 			children = (
+				9E3EEE8D1CC5655C00CDF835 /* Manager */,
 				9E2A9CCE1CC3FB1600DD2E69 /* Model */,
 				9E2A9CCD1CC3FAFB00DD2E69 /* Provider */,
 				9E2A9C9F1CC3EFE300DD2E69 /* AppDelegate.swift */,
@@ -115,6 +138,8 @@
 				9E2A9CA61CC3EFE300DD2E69 /* Assets.xcassets */,
 				9E2A9CA81CC3EFE300DD2E69 /* LaunchScreen.storyboard */,
 				9E2A9CAB1CC3EFE300DD2E69 /* Info.plist */,
+				9E3EEE901CC5672200CDF835 /* Podfile */,
+				9E3EEE921CC56C2C00CDF835 /* MyLotto-Bridging-Header.h */,
 			);
 			path = MyLotto;
 			sourceTree = "<group>";
@@ -140,6 +165,7 @@
 		9E2A9CCD1CC3FAFB00DD2E69 /* Provider */ = {
 			isa = PBXGroup;
 			children = (
+				9E3EEE8B1CC5609500CDF835 /* LottoDaysProvider.swift */,
 			);
 			path = Provider;
 			sourceTree = "<group>";
@@ -156,6 +182,23 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		9E3EEE8D1CC5655C00CDF835 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				9E3EEE8E1CC5657D00CDF835 /* HTTPManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		DEDEF8D25B03F26D007E7DBF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8433F82A0284B48105B78B18 /* Pods.debug.xcconfig */,
+				7F3AC696AAC18E91E2791634 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -163,9 +206,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9E2A9CC41CC3EFE300DD2E69 /* Build configuration list for PBXNativeTarget "MyLotto" */;
 			buildPhases = (
+				4BD65DEF47C4607340476BC6 /* Check Pods Manifest.lock */,
 				9E2A9C981CC3EFE300DD2E69 /* Sources */,
 				9E2A9C991CC3EFE300DD2E69 /* Frameworks */,
 				9E2A9C9A1CC3EFE300DD2E69 /* Resources */,
+				DE2C9401D35642A3FB977586 /* Embed Pods Frameworks */,
+				933B02BDCFCCF7ACB9442241 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -262,6 +308,7 @@
 			files = (
 				9E2A9CAA1CC3EFE300DD2E69 /* LaunchScreen.storyboard in Resources */,
 				9E2A9CA71CC3EFE300DD2E69 /* Assets.xcassets in Resources */,
+				9E3EEE911CC5672200CDF835 /* Podfile in Resources */,
 				9E2A9CA51CC3EFE300DD2E69 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -282,14 +329,64 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4BD65DEF47C4607340476BC6 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		933B02BDCFCCF7ACB9442241 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DE2C9401D35642A3FB977586 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		9E2A9C981CC3EFE300DD2E69 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E3EEE8C1CC5609500CDF835 /* LottoDaysProvider.swift in Sources */,
 				9E2A9CD61CC406AF00DD2E69 /* WinningConditions.swift in Sources */,
 				9E2A9CA21CC3EFE300DD2E69 /* MainViewController.swift in Sources */,
 				9E2A9CD21CC3FDA000DD2E69 /* Guess.swift in Sources */,
+				9E3EEE8F1CC5657D00CDF835 /* HTTPManager.swift in Sources */,
 				9E2A9CA01CC3EFE300DD2E69 /* AppDelegate.swift in Sources */,
 				9E2A9CD01CC3FB7500DD2E69 /* Drawing.swift in Sources */,
 				9E2A9CD81CC4151B00DD2E69 /* Win.swift in Sources */,
@@ -433,25 +530,31 @@
 		};
 		9E2A9CC51CC3EFE300DD2E69 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8433F82A0284B48105B78B18 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEFINES_MODULE = YES;
 				INFOPLIST_FILE = MyLotto/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.myHome.MyLotto;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MyLotto/MyLotto-Bridging-Header.h";
 			};
 			name = Debug;
 		};
 		9E2A9CC61CC3EFE300DD2E69 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7F3AC696AAC18E91E2791634 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEFINES_MODULE = YES;
 				INFOPLIST_FILE = MyLotto/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.myHome.MyLotto;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MyLotto/MyLotto-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -520,6 +623,7 @@
 				9E2A9CC61CC3EFE300DD2E69 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9E2A9CC71CC3EFE300DD2E69 /* Build configuration list for PBXNativeTarget "MyLottoTests" */ = {
 			isa = XCConfigurationList;
@@ -528,6 +632,7 @@
 				9E2A9CC91CC3EFE300DD2E69 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9E2A9CCA1CC3EFE300DD2E69 /* Build configuration list for PBXNativeTarget "MyLottoUITests" */ = {
 			isa = XCConfigurationList;
@@ -536,6 +641,7 @@
 				9E2A9CCC1CC3EFE300DD2E69 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
