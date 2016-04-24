@@ -8,7 +8,7 @@
         <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="MainViewController" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="MyLotto" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -27,7 +27,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1.1.1955" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7o1-zp-a5B">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="01.01.1955" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7o1-zp-a5B">
                                 <rect key="frame" x="198" y="301" width="102" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -36,10 +36,16 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xus-fB-OOX">
                                 <rect key="frame" x="159" y="330" width="141" height="30"/>
                                 <state key="normal" title="Gewinn ermitteln"/>
+                                <connections>
+                                    <action selector="examineWinningsButtonTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aqy-8m-dqH"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7HM-Fk-cha">
                                 <rect key="frame" x="159" y="363" width="141" height="30"/>
                                 <state key="normal" title="Gewinne anzeigen"/>
+                                <connections>
+                                    <action selector="showWinningsButtonTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="igZ-6e-Aum"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="noch nix" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F4P-ac-sgZ">
                                 <rect key="frame" x="20" y="367" width="131" height="21"/>
@@ -51,6 +57,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="calcStartLabel" destination="FFw-sN-36O" id="X1v-gd-TGQ"/>
+                        <outlet property="calcStartValueLabel" destination="7o1-zp-a5B" id="7ng-Xn-VCj"/>
+                        <outlet property="examineWinningButton" destination="xus-fB-OOX" id="0FL-hC-euG"/>
+                        <outlet property="showWinningsButton" destination="7HM-Fk-cha" id="dhM-B8-v8H"/>
+                        <outlet property="winningSumLabel" destination="F4P-ac-sgZ" id="BU0-Nn-3Wm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

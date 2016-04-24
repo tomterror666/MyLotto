@@ -10,6 +10,12 @@ import UIKit
 
 class MainViewController: UIViewController {
 
+	@IBOutlet weak var showWinningsButton: UIButton!
+	@IBOutlet weak var examineWinningButton: UIButton!
+	@IBOutlet weak var calcStartValueLabel: UILabel!
+	@IBOutlet weak var calcStartLabel: UILabel!
+	@IBOutlet weak var winningSumLabel: UILabel!
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view, typically from a nib.
@@ -21,5 +27,15 @@ class MainViewController: UIViewController {
 	}
 
 
+	@IBAction func showWinningsButtonTouched(sender: AnyObject) {
+	}
+	
+	@IBAction func examineWinningsButtonTouched(sender: AnyObject) {
+		let lottoDaysProvider = LottoDaysProvider.sharedProvider()
+		let startingDate = lottoDaysProvider.dateFromString(self.calcStartValueLabel.text!)
+		lottoDaysProvider.loadLottoDaysSinceDate(startingDate) { (lottoDays:NSArray) -> (Void) in
+			print("\(lottoDays)")
+		}
+	}
 }
 

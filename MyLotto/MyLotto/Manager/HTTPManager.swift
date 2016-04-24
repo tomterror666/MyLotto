@@ -42,8 +42,9 @@ class HTTPManager: NSObject {
 		self.sessionManager.responseSerializer = responseSerializer
 	}
 	
-	func GET(urlString:NSString, parameters:NSDictionary, progress:RequestProgress?, completion:RequestCompletion?) {
-		self.sessionManager.GET(urlString as String,
+	func GET(urlString:NSString, parameters:NSDictionary?, progress:RequestProgress?, completion:RequestCompletion?) {
+		let requestUrlString = (self.lottoBasePath as String) + (urlString as String)
+		self.sessionManager.GET(requestUrlString,
 		                        parameters: parameters,
 		                        progress: { (downloadProgress:NSProgress) in
 									if (progress != nil) {
@@ -52,7 +53,9 @@ class HTTPManager: NSObject {
 			},
 		                        success: { (task:NSURLSessionDataTask, responseObject:AnyObject?) in
 									if (completion != nil) {
-										completion!(nil, responseObject)
+										let jsonData = responseObject as! NSData
+										let jsonDict = try? NSJSONSerialization.JSONObjectWithData(jsonData, options:NSJSONReadingOptions.AllowFragments)
+										completion!(nil, jsonDict)
 									}
 			},
 		                        failure: { (task:NSURLSessionDataTask?, error:NSError) in

@@ -37,6 +37,23 @@ class LottoDaysProvider: NSObject {
 				let loadingOP:NSBlockOperation = NSBlockOperation.init(block: {
 					//todo: gehe liste der jahre durch und wenn noch nicht geladen, dann pack laderequest auf nsoperationqueue
 					// sind alle laderequests fertig (operationaueue ist leer) oder wurden alle jahre gefunden, dann gehe diese liste nochmals durch und bilde result
+					let requestUrlString = "6aus49_archiv?year=\(countingYear)"
+					self.httpManager.GET(requestUrlString, parameters: nil, progress: { (NSProgress) -> (Void) in}, completion: { (error:NSError?, requestObject:AnyObject?) -> (Void) in
+						if let requestError = error {
+							print("\(requestError)")
+						} else {
+							let requestResponse = requestObject as! NSDictionary
+							if let lottodaysInResonse = requestResponse.objectForKey(countingYear) {
+								self.allLottoDays.setObject(lottodaysInResonse, forKey: countingYear)
+							}
+							print("Request to \(requestUrlString) finished with folloning \(self.operationQueue.operationCount) requests")
+							if (self.operationQueue.operationCount == 1) {
+								if (completion != nil) {
+									completion!(self.collectAllLottoDaysSinceDate(date))
+								}
+							}
+						}
+					})
 				})
 				self.operationQueue.addOperation(loadingOP)
 			}
@@ -61,7 +78,12 @@ class LottoDaysProvider: NSObject {
 	func dateFromString(dateString:String) -> NSDate {
 		let formatter:NSDateFormatter = NSDateFormatter()
 		formatter.dateFormat = "yyyy-MM-dd"
-		return formatter.dateFromString(dateString)!
+		if let result = formatter.dateFromString(dateString) {
+			return result
+		} else {
+			formatter.dateFormat = "dd.MM.yyyy"
+			return formatter.dateFromString(dateString)!
+		}
 	}
 	
 	func getYearFromDate(date:NSDate) -> Int {
