@@ -23,6 +23,8 @@
 		9E3EEE8C1CC5609500CDF835 /* LottoDaysProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E3EEE8B1CC5609500CDF835 /* LottoDaysProvider.swift */; };
 		9E3EEE8F1CC5657D00CDF835 /* HTTPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E3EEE8E1CC5657D00CDF835 /* HTTPManager.swift */; };
 		9E3EEE911CC5672200CDF835 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 9E3EEE901CC5672200CDF835 /* Podfile */; };
+		E8B1BBC81CD253F500B63BA7 /* DrawingProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B1BBC71CD253F500B63BA7 /* DrawingProvider.swift */; };
+		E8B1BBCB1CD2561000B63BA7 /* NSDate+LottoExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B1BBCA1CD2561000B63BA7 /* NSDate+LottoExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +70,8 @@
 		9E3EEE8E1CC5657D00CDF835 /* HTTPManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPManager.swift; sourceTree = "<group>"; };
 		9E3EEE901CC5672200CDF835 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Podfile; path = ../../Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9E3EEE921CC56C2C00CDF835 /* MyLotto-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MyLotto-Bridging-Header.h"; sourceTree = "<group>"; };
+		E8B1BBC71CD253F500B63BA7 /* DrawingProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawingProvider.swift; sourceTree = "<group>"; };
+		E8B1BBCA1CD2561000B63BA7 /* NSDate+LottoExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+LottoExtension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +133,7 @@
 		9E2A9C9E1CC3EFE300DD2E69 /* MyLotto */ = {
 			isa = PBXGroup;
 			children = (
+				E8B1BBC91CD255B200B63BA7 /* Utils */,
 				9E3EEE8D1CC5655C00CDF835 /* Manager */,
 				9E2A9CCE1CC3FB1600DD2E69 /* Model */,
 				9E2A9CCD1CC3FAFB00DD2E69 /* Provider */,
@@ -166,6 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				9E3EEE8B1CC5609500CDF835 /* LottoDaysProvider.swift */,
+				E8B1BBC71CD253F500B63BA7 /* DrawingProvider.swift */,
 			);
 			path = Provider;
 			sourceTree = "<group>";
@@ -197,6 +203,14 @@
 				7F3AC696AAC18E91E2791634 /* Pods.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		E8B1BBC91CD255B200B63BA7 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				E8B1BBCA1CD2561000B63BA7 /* NSDate+LottoExtension.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -387,9 +401,11 @@
 				9E2A9CA21CC3EFE300DD2E69 /* MainViewController.swift in Sources */,
 				9E2A9CD21CC3FDA000DD2E69 /* Guess.swift in Sources */,
 				9E3EEE8F1CC5657D00CDF835 /* HTTPManager.swift in Sources */,
+				E8B1BBC81CD253F500B63BA7 /* DrawingProvider.swift in Sources */,
 				9E2A9CA01CC3EFE300DD2E69 /* AppDelegate.swift in Sources */,
 				9E2A9CD01CC3FB7500DD2E69 /* Drawing.swift in Sources */,
 				9E2A9CD81CC4151B00DD2E69 /* Win.swift in Sources */,
+				E8B1BBCB1CD2561000B63BA7 /* NSDate+LottoExtension.swift in Sources */,
 				9E2A9CD41CC4032800DD2E69 /* DrawingRate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

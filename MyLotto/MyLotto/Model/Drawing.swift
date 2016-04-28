@@ -31,6 +31,10 @@ class Drawing: NSObject {
 		return me
 	}
 	
+	override var description : String {
+		return self.drawingAsString() as String
+	}
+	
 	init(jsonDict:NSDictionary) {
 		self.drawingNumbers = jsonDict.valueForKeyPath("lotto.gewinnzahlen") as! NSArray
 		self.year = jsonDict.valueForKeyPath("year")?.integerValue

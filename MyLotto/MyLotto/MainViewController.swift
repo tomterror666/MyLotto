@@ -32,9 +32,13 @@ class MainViewController: UIViewController {
 	
 	@IBAction func examineWinningsButtonTouched(sender: AnyObject) {
 		let lottoDaysProvider = LottoDaysProvider.sharedProvider()
-		let startingDate = lottoDaysProvider.dateFromString(self.calcStartValueLabel.text!)
+		let startingDate = NSDate.dateFromString(self.calcStartValueLabel.text!)
 		lottoDaysProvider.loadLottoDaysSinceDate(startingDate) { (lottoDays:NSArray) -> (Void) in
 			print("\(lottoDays)")
+			let drawingProvider = DrawingProvider.sharedProvider()
+			drawingProvider.loadDrawingsForDates(lottoDays as! [NSDate], completion: { (allDrawings:[Drawing]) -> (Void) in
+				print("\(allDrawings)")
+			})
 		}
 	}
 }
