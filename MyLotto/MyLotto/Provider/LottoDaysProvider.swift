@@ -17,6 +17,7 @@ class LottoDaysProvider: NSObject {
 	var operationQueue:NSOperationQueue
 	var loadLottoDaysCompletion:LottoDaysCompletion?
 	var loadLottoDaysStartDate:NSDate!
+	var numberOfRequests:Int = 0
 	
 	static func sharedProvider() -> LottoDaysProvider {
 		let me = LottoDaysProvider()
@@ -38,39 +39,39 @@ class LottoDaysProvider: NSObject {
 		let endingYear = NSDate().getYear()
 		self.loadLottoDaysCompletion = completion
 		self.loadLottoDaysStartDate = date
-		var numberOfRequests = 0
-		for countingYear in startingYear...endingYear {
+		for countingYear in startingYear...endingYear - 1 {
 			if self.allLottoDays.objectForKey("\(countingYear)") == nil {
-				numberOfRequests += 1
-				let loadingOP:NSBlockOperation = NSBlockOperation.init(block: {
-					let requestUrlString = "6aus49_archiv?year=\(countingYear)"
-					self.httpManager.GET(requestUrlString, parameters: nil, progress: { (NSProgress) -> (Void) in}, completion: { (error:NSError?, requestObject:AnyObject?) -> (Void) in
-						if let requestError = error {
-							print("\(requestError)")
-						} else { 
-							let requestResponse = requestObject as! NSDictionary
-							if let lottodaysInResonse = requestResponse.objectForKey("\(countingYear)") {
-								self.allLottoDays.setObject(lottodaysInResonse, forKey: "\(countingYear)")
-							}
-							print("Request to \(requestUrlString) finished with folloning \(numberOfRequests) requests")
-							numberOfRequests -= 1
-							if (numberOfRequests == 0) {
-								self.storeLottoDaysToFile();
-								if (completion != nil) {
-									completion!(self.collectAllLottoDaysSinceDate(date))
-								}
-							}
+				self.numberOfRequests += 1
+				self.addReadRequestForLottoDaysForYearToOperationQueue(countingYear, date:date, completion:completion)
+			}
+		}
+		self.numberOfRequests += 1
+		self.addReadRequestForLottoDaysForYearToOperationQueue(endingYear, date:date, completion:completion)
+	}
+	
+	func addReadRequestForLottoDaysForYearToOperationQueue(year:Int, date:NSDate, completion:LottoDaysCompletion?) {
+		let loadingOP:NSBlockOperation = NSBlockOperation.init(block: {
+			let requestUrlString = "6aus49_archiv?year=\(year)"
+			self.httpManager.GET(requestUrlString, parameters: nil, progress: { (NSProgress) -> (Void) in}, completion: { (error:NSError?, requestObject:AnyObject?) -> (Void) in
+				if let requestError = error {
+					print("\(requestError)")
+				} else { 
+					let requestResponse = requestObject as! NSDictionary
+					if let lottodaysInResonse = requestResponse.objectForKey("\(year)") {
+						self.allLottoDays.setObject(lottodaysInResonse, forKey: "\(year)")
+					}
+					print("Request to \(requestUrlString) finished with folloning \(self.numberOfRequests) requests")
+					self.numberOfRequests -= 1
+					if (self.numberOfRequests == 0) {
+						self.storeLottoDaysToFile();
+						if (completion != nil) {
+							completion!(self.collectAllLottoDaysSinceDate(date))
 						}
-					})
-				})
-				self.operationQueue.addOperation(loadingOP)
-			}
-		}
-		if (self.operationQueue.operationCount == 0) {
-			if (completion != nil) {
-				completion!(self.collectAllLottoDaysSinceDate(date))
-			}
-		}
+					}
+				}
+			})
+		})
+		self.operationQueue.addOperation(loadingOP)
 	}
 	
 	func collectAllLottoDaysSinceDate(date:NSDate) -> NSArray {
