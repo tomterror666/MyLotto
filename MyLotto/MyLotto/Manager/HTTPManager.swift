@@ -53,7 +53,10 @@ class HTTPManager: NSObject {
 			},
 		                        success: { (task:NSURLSessionDataTask, responseObject:AnyObject?) in
 									if (completion != nil) {
-										let jsonData = responseObject as! NSData
+										var jsonData = responseObject as! NSData
+										var jsonString = NSString(data: jsonData, encoding: NSUTF8StringEncoding)
+										jsonString = jsonString?.stringByReplacingOccurrencesOfString(":null", withString: ":0")
+										jsonData = NSData(bytes: (jsonString!.UTF8String), length:jsonString!.lengthOfBytesUsingEncoding(NSUTF8StringEncoding))
 										let jsonDict = try? NSJSONSerialization.JSONObjectWithData(jsonData, options:NSJSONReadingOptions.AllowFragments)
 										completion!(nil, jsonDict)
 									}

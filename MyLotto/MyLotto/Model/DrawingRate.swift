@@ -21,14 +21,48 @@ class DrawingRate: NSObject {
 	}
 	
 	init(jsonDict:NSDictionary, drawingType:DrawingType) {
-		self.possibleWin = jsonDict.objectForKey("quote") as! CGFloat
-		self.drawingRateDescription = jsonDict.objectForKey("beschreibung") as! NSString
-		self.drawingRateShortDescription = jsonDict.objectForKey("kurzbeschreibung") as! NSString
-		self.classNumber = jsonDict.objectForKey("klasse") as! NSInteger
+		self.possibleWin = 0
+		self.drawingRateDescription = ""
+		self.drawingRateShortDescription = ""
+		self.classNumber = 0
 		self.winningConditions = WinningConditions()
 		super.init()
+		self.readDrawingRateFromDict(jsonDict)
 		self.calcWinningConditinoForDrawingType(drawingType)
 	}
+	
+	func readDrawingRateFromDict(jsonDict:NSDictionary) {
+		self.readPossibleWinFromJsonDict(jsonDict)
+		self.readDrawingRateDescriptionFromJsonDict(jsonDict)
+		self.readDrawingRateShortDescriptionFromJsonDict(jsonDict)
+		self.readClassNumberFromJsonDict(jsonDict)
+	}
+	
+	func readPossibleWinFromJsonDict(jsonDict:NSDictionary) {
+		if let stringValue = jsonDict.objectForKey("quote") {
+			self.possibleWin = CGFloat(stringValue.floatValue)
+		}
+	}
+	
+	func readDrawingRateDescriptionFromJsonDict(jsonDict:NSDictionary) {
+		if let stringValue = jsonDict.objectForKey("beschreibung") {
+			self.drawingRateDescription = stringValue as! NSString
+		}
+	}
+	
+	func readDrawingRateShortDescriptionFromJsonDict(jsonDict:NSDictionary) {
+		if let stringValue = jsonDict.objectForKey("kurzbeschreibung") {
+			self.drawingRateShortDescription = stringValue as! NSString
+		}
+	}
+	
+	func readClassNumberFromJsonDict(jsonDict:NSDictionary) {
+		if let stringValue = jsonDict.objectForKey("klasse") {
+			self.classNumber = stringValue.integerValue
+		}
+	}
+	
+	
 	
 	func calcWinningConditinoForDrawingType(drawingType:DrawingType) {
 		if (drawingType == DrawingType.drawingTypeSuperZahl) {

@@ -19,8 +19,8 @@ class Drawing: NSObject {
 	var drawingNumbers:NSArray!
 	var year:NSInteger!
 	var date:NSString!
-	var zusatzZahl:NSInteger?
-	var superZahl:NSInteger?
+	var zusatzZahl:NSInteger!
+	var superZahl:NSInteger!
 	var stake:CGFloat?
 	var rates:NSArray!
 	var wins:NSMutableArray!
@@ -36,12 +36,69 @@ class Drawing: NSObject {
 	}
 	
 	init(jsonDict:NSDictionary) {
-		self.drawingNumbers = jsonDict.valueForKeyPath("lotto.gewinnzahlen") as! NSArray
-		self.year = jsonDict.valueForKeyPath("year")?.integerValue
-		self.date = jsonDict.valueForKeyPath("date") as! NSString
-		self.zusatzZahl = jsonDict.valueForKeyPath("lotto.zusatzzahl") as? NSInteger
-		self.superZahl = jsonDict.valueForKeyPath("lotto.superzahl") as? NSInteger
-		self.stake = jsonDict.valueForKeyPath("lotto.spieleinsatz") as? CGFloat
+		self.drawingNumbers = NSArray()
+		self.year = 0
+		self.date = ""
+		self.zusatzZahl = 0
+		self.superZahl = 0
+		self.stake = 0.0
+		
+		super.init()
+		self.readDrawingFromDict(jsonDict)
+		if let quotas = jsonDict.valueForKeyPath("lotto.quoten") {
+			self.readRatesFromArray(quotas as! [NSDictionary])
+		}
+//		self.readRatesFromArray(jsonDict.valueForKeyPath("lotto.quoten") as! [NSDictionary])
+		self.configureDrawingTypeWithJsonDict(jsonDict)
+	}
+	
+	func readDrawingFromDict(jsonDict:NSDictionary) {
+		self.readDrawingNumbersFromDict(jsonDict)
+		self.readYearFromDict(jsonDict)
+		self.readDateFromDict(jsonDict)
+		self.readZusatzZahlFromDict(jsonDict)
+		self.readSuperZahlFromDict(jsonDict)
+		self.readStakeFromDict(jsonDict)
+	}
+	
+	func readDrawingNumbersFromDict(jsonDict:NSDictionary) {
+		if let stringValue = jsonDict.valueForKeyPath("lotto.gewinnzahlen") {
+			self.drawingNumbers = stringValue as! NSArray
+		}
+	}
+	
+	func readYearFromDict(jsonDict:NSDictionary) {
+		if let stringValue = jsonDict.valueForKeyPath("year") {
+			self.year = stringValue.integerValue
+		}
+	}
+	
+	func readDateFromDict(jsonDict:NSDictionary) {
+		if let stringValue = jsonDict.valueForKeyPath("date") {
+			self.date = stringValue as! NSString
+		}
+	}
+	
+	func readZusatzZahlFromDict(jsonDict:NSDictionary) {
+		if let stringValue = jsonDict.valueForKeyPath("lotto.zusatzzahl") {
+			self.zusatzZahl = stringValue.integerValue
+		}
+	}
+	
+	func readSuperZahlFromDict(jsonDict:NSDictionary) {
+		if let stringValue = jsonDict.valueForKeyPath("lotto.superzahl") {
+			self.superZahl = stringValue.integerValue
+		}
+	}
+	
+	func readStakeFromDict(jsonDict:NSDictionary) {
+//		if let stringValue = jsonDict.valueForKeyPath("lotto.spieleinsatz") {
+//			self.stake = CGFloat(stringValue.floatValue)
+//		}
+		let stringValue = jsonDict.valueForKeyPath("lotto.spieleinsatz")
+		if (stringValue != nil) {
+			self.stake = CGFloat((stringValue?.floatValue)!)
+		}
 	}
 	
 	func readRatesFromArray(ratesArray:[NSDictionary]) {
@@ -108,13 +165,13 @@ class Drawing: NSObject {
 	
 	func drawingAsString() -> NSString {
 		if (self.drawingType == DrawingType.drawingTypeZusatzZahl) {
-			return "\(self.drawingNumbers[0]) - \(self.drawingNumbers[1]) - \(self.drawingNumbers[2]) - \(self.drawingNumbers[3]) - \(self.drawingNumbers[4]) - \(self.drawingNumbers[5]) ZZ:\(self.zusatzZahl)"
+			return "Ziehung vom \(self.date): \(self.drawingNumbers[0]) - \(self.drawingNumbers[1]) - \(self.drawingNumbers[2]) - \(self.drawingNumbers[3]) - \(self.drawingNumbers[4]) - \(self.drawingNumbers[5]) ZZ:\(self.zusatzZahl)\r"
 		}
 		else if (self.drawingType == DrawingType.drawingTypeSuperZahl) {
-			return "\(self.drawingNumbers[0]) - \(self.drawingNumbers[1]) - \(self.drawingNumbers[2]) - \(self.drawingNumbers[3]) - \(self.drawingNumbers[4]) - \(self.drawingNumbers[5]) SZ:\(self.superZahl)"
+			return "Ziehung vom \(self.date): \(self.drawingNumbers[0]) - \(self.drawingNumbers[1]) - \(self.drawingNumbers[2]) - \(self.drawingNumbers[3]) - \(self.drawingNumbers[4]) - \(self.drawingNumbers[5]) SZ:\(self.superZahl)\r"
 		}
 		else if (self.drawingType == DrawingType.drawingTypeZusatzZahlUndSuperZahl) {
-			return "\(self.drawingNumbers[0]) - \(self.drawingNumbers[1]) - \(self.drawingNumbers[2]) - \(self.drawingNumbers[3]) - \(self.drawingNumbers[4]) - \(self.drawingNumbers[5]) SZ:\(self.superZahl) ZZ:\(self.zusatzZahl)"
+			return "Ziehung vom \(self.date): \(self.drawingNumbers[0]) - \(self.drawingNumbers[1]) - \(self.drawingNumbers[2]) - \(self.drawingNumbers[3]) - \(self.drawingNumbers[4]) - \(self.drawingNumbers[5]) SZ:\(self.superZahl) ZZ:\(self.zusatzZahl)\r"
 		}
 		else {
 			return ""

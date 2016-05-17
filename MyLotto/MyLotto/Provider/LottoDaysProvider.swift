@@ -28,7 +28,7 @@ class LottoDaysProvider: NSObject {
 		self.allLottoDays = NSMutableDictionary()
 		self.httpManager = HTTPManager.sharedManager()
 		self.operationQueue = NSOperationQueue()
-		self.operationQueue.maxConcurrentOperationCount = 1
+		self.operationQueue.maxConcurrentOperationCount = 9
 		self.operationQueue.qualityOfService = NSQualityOfService.Background
 		super.init()
 		self.loadLottoDaysFromFile()
@@ -60,6 +60,7 @@ class LottoDaysProvider: NSObject {
 					if let lottodaysInResonse = requestResponse.objectForKey("\(year)") {
 						self.allLottoDays.setObject(lottodaysInResonse, forKey: "\(year)")
 					}
+					objc_sync_enter(self)
 					print("Request to \(requestUrlString) finished with folloning \(self.numberOfRequests) requests")
 					self.numberOfRequests -= 1
 					if (self.numberOfRequests == 0) {
@@ -68,6 +69,7 @@ class LottoDaysProvider: NSObject {
 							completion!(self.collectAllLottoDaysSinceDate(date))
 						}
 					}
+					objc_sync_exit(self)
 				}
 			})
 		})
